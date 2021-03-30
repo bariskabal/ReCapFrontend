@@ -1,19 +1,38 @@
+<ul *ngIf="dataLoaded==false"  class="list-group">
+  <li class="list-group-item active" aria-current="true">Markalar</li>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</ul>
 
-<div *ngIf="dataLoaded==false" class="spinner-border" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>  
+<div class="mb-2 mt-2">
+  <input type="text" [(ngModel)]="filterBrandText" id="filterBrandText"
+  class="form-control"
+  placeholder="Marka Giriniz...">
+</div>
 
-<table *ngIf="dataLoaded==true" class="table">
-  <thead>
-      <tr>
-          <th>Id</th>
-          <th>Model</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr *ngFor="let brand of brands">
-          <td>{{brand.brandId}}</td>
-          <td>{{brand.brandName}}</td>
-      </tr>
-  </tbody> 
-</table>
+
+<ul *ngIf="dataLoaded==true" class="list-group">
+  <li class="list-group-item list-group-item-danger " aria-current="true">Markalar</li>
+
+  <li (click)="setCurrentBrand(brand)"
+    routerLink="/cars/brand/{{brand.brandId}}"
+    *ngFor="let brand of brands  | filterBrandPipe:filterBrandText" 
+    [class]="getCurrentBrandClass(brand)">
+    <div class="d-flex align-items-center">
+      <div class="d-flex justify-content-start w-50">
+        {{brand.brandName |uppercase}}
+      </div>
+      <div class="d-flex justify-content-end w-50">
+        <button routerLink="brands/brandupdate/{{brand.brandId}}" class="btn btn-success btn-sm btn-right"><i class="far fa-edit"></i></button>
+      </div>
+    </div>
+   
+    
+  </li>  
+    
+    <li routerLink="/cars"
+  class="list-group-item mt-1" (click)="removeCurrentBrand()">Tüm Markalar</li>
+</ul>

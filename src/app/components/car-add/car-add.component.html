@@ -1,0 +1,76 @@
+
+<div class="container">
+  <app-navi></app-navi>
+  <div class="col-md-12">
+      <div class="card">
+
+          <div class="card-header">
+              <h5 class="title">Add Car</h5>
+          </div>
+
+          <div class="card-body">
+
+              <form [formGroup]="carAddForm">
+
+                  <div class="mb-2">
+                      <label for="brandId">brandId</label>
+                      <div class="form-group">
+                          <input type="number" id="brandId" formControlName="brandId" class="form-control"
+                              placeholder="brandId" />
+                      </div>
+                  </div>
+
+                  <div class="mb-2">
+                      <label for="colorId">colorId</label>
+                      <div class="form-group">
+                          <input type="number" id="colorId" formControlName="colorId" class="form-control"
+                              placeholder="colorId" />
+                      </div>
+                  </div>
+                  <div class="mb-2">
+                    <label for="carName">Car Name</label>
+                    <div class="form-group">
+                        <input type="text" id="carName" formControlName="carName" class="form-control"
+                            placeholder="carName" />
+                    </div>
+                </div>
+
+                  <div class="mb-2">
+                      <label for="modelYear">modelYear</label>
+                      <div class="form-group">
+                          <input type="text" id="modelYear" formControlName="modelYear" class="form-control"
+                              placeholder="modelYear" />
+                      </div>
+                  </div>
+
+                  <div class="mb-2">
+                      <label for="dailyPrice">dailyPrice</label>
+                      <div class="form-group">
+                          <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control"
+                              placeholder="dailyPrice" />
+                      </div>
+                  </div>
+
+                  <div class="mb-2">
+                      <label for="description">description</label>
+                      <div class="form-group">
+                          <input type="text" id="description" formControlName="description" class="form-control"
+                              placeholder="description" />
+                      </div>
+                  </div>
+
+              </form>
+
+
+          </div>
+
+
+          <div class="card-footer">
+              <button  routerLink="/cars" class="btn btn-outline-info float-end" type="button" (click)="add()">
+                  Add
+              </button>
+          </div>
+          
+      </div>
+  </div>
+</div>
